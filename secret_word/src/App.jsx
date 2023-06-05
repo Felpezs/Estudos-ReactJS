@@ -48,7 +48,7 @@ function App() {
     setGameStage(stages[1].name);
   };
 
-  const verifyLetter = (letter) => setGameStage(console.log(letter));
+  const verifyLetter = (letter) => console.log(letter);
   const restart = () => setGameStage(stages[0].name);
 
   return (
