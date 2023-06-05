@@ -67,3 +67,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.red-title{
+  background-color: #000;
+  color: red;
+  padding: 15px;
+  border: 5px solid red;
+}
+
+.title{
+  background-color: #000;
+  color: #fff;
+}
