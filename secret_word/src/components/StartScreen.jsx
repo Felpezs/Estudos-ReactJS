@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './StartScreen.module.css'
+import './StartScreen.module.css'
 
 const StartScreen = () => {
   return (
