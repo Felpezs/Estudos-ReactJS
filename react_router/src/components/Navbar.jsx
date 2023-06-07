@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
-import './Navbar.css'
+import { Link, NavLink } from "react-router-dom";
+import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/about"}>Sobre</Link>
+      {/*Usando o is-active, padrao do navlink*/}
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">Sobre</NavLink>
+
+      {/*<Link to={"/"}>Home</Link>
+      <Link to={"/about"}>Sobre</Link>*/}
     </nav>
   );
 };
