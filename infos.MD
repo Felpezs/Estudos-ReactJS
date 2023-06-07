@@ -15,3 +15,7 @@ Os estilos css usados não são scoped, ou seja, qualquer estilo pode impactar n
 ## Routers
 
 Quaisquer components que utilizem alguma funcionalidade disponibilizada pelo router, devem ser filhos do browser router
+
+## Hooks
+
+useReducer: é como se fosse o useState, mas ao invés da simples atribuição, é possível executar uma função
