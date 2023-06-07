@@ -10,3 +10,8 @@ A criacão do projeto pode ser feita com:
 ## CSS
 
 Os estilos css usados não são scoped, ou seja, qualquer estilo pode impactar na exibição de um elemento.
+
+
+## Routers
+
+Quaisquer components que utilizem alguma funcionalidade disponibilizada pelo router, devem ser filhos do browser router
