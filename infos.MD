@@ -19,3 +19,4 @@ Quaisquer components que utilizem alguma funcionalidade disponibilizada pelo rou
 ## Hooks
 
 useReducer: é como se fosse o useState, mas ao invés da simples atribuição, é possível executar uma função
+useRef: não re-renderiza o componente
