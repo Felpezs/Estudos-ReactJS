@@ -5,7 +5,7 @@ import { useReducer } from "react";
 const HookUseReducer = () => {
   const [number, dispatch] = useReducer((state, action) => {
     return Math.random(state);
-  });
+  }, 2023);
 
   const initialTasks = [
     { id: 1, text: "Task1" },
@@ -13,17 +13,34 @@ const HookUseReducer = () => {
   ];
 
   const taskReducer = (state, action) => {
-    switch(action.type){
-        case "ADD":
+    switch (action.type) {
+      case "ADD": {
+        const newTask = {
+          id: Math.random(),
+          text: taskText,
+        };
+        setTaskText("");
+        return [...state, newTask];
+      }
+      case "DELETE": {
+        return state.filter((task) => task.id !== action.id);
+      }
+      default:
+        return state;
     }
   };
 
-  const [tasks, dispatchTasks] = useReducer(taskReducer, initialTasks);
   const [taskText, setTaskText] = useState("");
+  const [tasks, dispatchTasks] = useReducer(taskReducer, initialTasks);
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatchTasks({ type: "ADD" });
+  };
+
+  const removeTask = (id) => {
+    dispatchTasks({ type: "DELETE", id: id });
+  };
 
   return (
     <div>
@@ -40,7 +57,9 @@ const HookUseReducer = () => {
         <input type="submit" value="Enviar" />
       </form>
       {tasks.map((task) => (
-        <li key={task.id}>{task.text}</li>
+        <li key={task.id} onDoubleClick={() => removeTask(task.id)}>
+          {task.text}
+        </li>
       ))}
       <hr />
     </div>
