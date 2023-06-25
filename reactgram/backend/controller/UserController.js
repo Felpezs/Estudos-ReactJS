@@ -51,19 +51,20 @@ const login = async (req, res) => {
 
   if (!(await bcrypt.compare(password, user.password))) {
     res.status(422).json({ errors: ["Usuário inválido"] });
+    return;
   }
 
   res.status(201).json({
     _id: user._id,
     profileImage: user.profileImage,
-    token: generateToken(user._id)
-  })
+    token: generateToken(user._id),
+  });
 };
 
-const getCurrentUser = async(req, res)=>{
-  const user = req.user
-  res.status(200).json(user)
-}
+const getCurrentUser = async (req, res) => {
+  const user = req.user;
+  res.status(200).json(user);
+};
 
 module.exports = {
   register,
