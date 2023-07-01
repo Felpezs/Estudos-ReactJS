@@ -28,7 +28,9 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      (state.loading = false), (state.error = false), (state.success = false);
+      state.loading = false;
+      state.error = false;
+      state.success = false;
     },
   },
   extraReducers: (builder) => {
