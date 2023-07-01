@@ -1,4 +1,5 @@
 require("dotenv").config();
+const morgan = require("morgan")
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
@@ -6,6 +7,9 @@ const cors = require("cors");
 const port = process.env.PORT;
 
 const app = express();
+
+//Morgan config
+app.use(morgan("dev"))
 
 //Config form data and JSON response
 app.use(express.json());
