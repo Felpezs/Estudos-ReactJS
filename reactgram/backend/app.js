@@ -24,7 +24,7 @@ app.use(
 );
 
 //Upload directory
-app.use("uploads", express.static(path.join(__dirname, "/uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 require("./config/db.js");
 
