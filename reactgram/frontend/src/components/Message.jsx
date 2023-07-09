@@ -7,8 +7,3 @@ export const Message = ({ msg, type }) => {
     </div>
   );
 };
-
-Message.propTypes = {
-  msg: String,
-  type: String,
-};

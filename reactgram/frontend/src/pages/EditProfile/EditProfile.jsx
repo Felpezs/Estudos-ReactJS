@@ -30,7 +30,7 @@ export const EditProfile = () => {
     dispatch(profile());
   }, [dispatch]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
@@ -57,7 +57,7 @@ export const EditProfile = () => {
 
     formData.append("user", userFormData);
 
-    await dispatch(updateProfile(formData));
+    dispatch(updateProfile(formData));
 
     setTimeout(() => {
       dispatch(resetMessage());
