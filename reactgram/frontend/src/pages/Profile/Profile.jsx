@@ -13,7 +13,12 @@ import { useParams } from "react-router-dom";
 
 /* --------------------------------- Slices --------------------------------- */
 import { getUserDetails } from "slices/userSlice";
-import { publishPhoto, resetMessage, getUserPhotos } from "slices/photoSlice";
+import {
+  publishPhoto,
+  resetMessage,
+  getUserPhotos,
+  deletePhoto,
+} from "slices/photoSlice";
 
 /* ---------------------------------- Style --------------------------------- */
 import "./Profile.css";
@@ -48,6 +53,12 @@ const Profile = () => {
     setImage(image);
   };
 
+  const resetComponentMessage = () => {
+    setTimeout(() => {
+      dispatch(resetMessage());
+    }, 2000);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -68,9 +79,13 @@ const Profile = () => {
 
     setTitle("");
 
-    setTimeout(() => {
-      dispatch(resetMessage());
-    }, 2000);
+    resetComponentMessage();
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deletePhoto(id));
+
+    resetComponentMessage();
   };
 
   if (loading) {
@@ -119,7 +134,7 @@ const Profile = () => {
         <div className="photos-container">
           {photos &&
             photos.map((photo) => (
-              <div className="photo" key={photo.id}>
+              <div className="photo" key={photo._id}>
                 {photo.image && (
                   <img
                     src={`${uploads}/photos/${photo.image}`}
@@ -132,16 +147,16 @@ const Profile = () => {
                       <BsFillEyeFill />
                     </Link>
                     <BsPencilFill />
-                    <BsXLg />
+                    <BsXLg onClick={() => handleDelete(photo._id)} />
                   </div>
                 ) : (
                   <Link className="btn" to={`/photos/${photo._id}`}>
                     Ver
                   </Link>
                 )}
-                {photos.length === 0 && <p>Ainda não há fotos publicadas</p>}
               </div>
             ))}
+          {photos.length == 0 && <p>Ainda não há fotos publicadas</p>}
         </div>
       </div>
     </div>
